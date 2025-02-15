@@ -1,0 +1,27 @@
+class Solution {
+    public  boolean isSame(TreeNode T, TreeNode S){
+        if(T==null && S==null){
+            return true;
+        }
+        if(S==null || T==null){
+            return false;
+        }
+        
+        if(S.val!=T.val){
+            return false;
+        }
+        return isSame(T.left,S.left) && isSame(T.right,S.right);
+    }
+    public boolean isSubtree(TreeNode Tree, TreeNode Sub) {
+        if(Sub==null){
+            return true;
+        }
+        if(Tree==null){
+            return false;
+        }
+        if(isSame(Tree,Sub)){
+            return true;
+        }
+        return isSubtree(Tree.left,Sub) || isSubtree(Tree.right,Sub);
+    }
+}
